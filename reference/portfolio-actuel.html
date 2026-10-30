@@ -1,0 +1,951 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Loïc Bodet — Gestionnaire IT · BTS SIO SISR</title>
+<meta name="description" content="Portfolio de Loïc Bodet, alternant Gestionnaire IT chez INEO RHT et étudiant en BTS SIO option SISR : projets, tableau E5, veille technologique.">
+<meta name="theme-color" content="#050505">
+<link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Crect width='40' height='40' fill='%23050505'/%3E%3Crect x='6' y='6' width='28' height='28' fill='none' stroke='%23f2f2ee' stroke-width='2.5'/%3E%3Ctext x='20' y='26' text-anchor='middle' font-family='monospace' font-size='13' font-weight='700' fill='%23f2f2ee'%3ELB%3C/text%3E%3C/svg%3E">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="fr_FR">
+<meta property="og:url" content="https://portfolio-bodet-loic.vercel.app/">
+<meta property="og:title" content="Loïc Bodet — Portfolio BTS SIO SISR">
+<meta property="og:description" content="Alternant Gestionnaire IT chez INEO RHT : Active Directory, NAS, réseau Cisco, SharePoint. Projets, tableau E5 et veille technologique.">
+<meta property="og:image" content="https://portfolio-bodet-loic.vercel.app/assets/og-image.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Loïc Bodet, portfolio BTS SIO SISR">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@100..900&family=Geist+Mono:wght@400;500&family=Geist:wght@300..600&family=Unbounded:wght@800;900&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#050505; --bg2:#0b0b0b; --panel:#0e0e0e; --line:#ffffff1a; --line2:#ffffff33;
+  --fg:#f2f2ee; --dim:#f2f2eecc; --muted:#8c8c88; --faint:#5a5a57;
+  --display:'Big Shoulders Display','Arial Narrow',sans-serif;
+  --wide:'Unbounded','Arial Black',sans-serif;
+  --sans:'Geist',system-ui,-apple-system,'Segoe UI',sans-serif;
+  --mono:'Geist Mono',ui-monospace,SFMono-Regular,Consolas,monospace;
+  --pad:clamp(16px,2.6vw,40px);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:64px}
+body{background:var(--bg);color:var(--fg);font:16px/1.6 var(--sans);overflow-x:hidden}
+a{color:inherit}
+::selection{background:var(--fg);color:var(--bg)}
+:focus-visible{outline:1px solid var(--fg);outline-offset:3px}
+.mono{font:400 12px/1.5 var(--mono);letter-spacing:.12em;text-transform:uppercase}
+.muted{color:var(--muted)}
+img{max-width:100%;display:block}
+
+/* ---------- En-tête ---------- */
+header{position:fixed;inset:0 0 auto;z-index:40;height:56px;display:grid;grid-template-columns:1fr auto 1fr;align-items:center;padding:0 var(--pad);background:#050505e6;backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.logo-txt{font:500 12px var(--mono);letter-spacing:.16em;text-decoration:none}
+nav{display:flex;align-items:center;gap:26px}
+nav a{font:400 11px var(--mono);letter-spacing:.12em;text-transform:uppercase;text-decoration:none;color:var(--dim);padding:18px 0;position:relative;white-space:nowrap}
+nav a i{font-style:normal;color:var(--faint);margin-right:6px}
+nav a::after{content:"";position:absolute;left:0;right:0;bottom:12px;height:1px;background:var(--fg);transform:scaleX(0);transform-origin:left;transition:transform .3s}
+nav a:hover,nav a[aria-current=true]{color:var(--fg)}
+nav a:hover::after,nav a[aria-current=true]::after{transform:none}
+nav .mark{width:22px;height:22px;border:1px solid var(--fg);display:grid;place-items:center;font:500 9px var(--mono);padding:0}
+nav .mark::after{display:none}
+.hd-right{justify-self:end;display:flex;gap:8px}
+.chip{display:inline-flex;align-items:center;gap:8px;font:400 11px var(--mono);letter-spacing:.12em;text-transform:uppercase;text-decoration:none;border:1px solid var(--line2);padding:6px 10px;color:var(--fg);background:none;cursor:pointer}
+.chip:hover{background:var(--fg);color:var(--bg)}
+#menu-btn{display:none}
+@media(max-width:1100px){
+  header{grid-template-columns:1fr auto}
+  nav{position:fixed;top:56px;left:0;right:0;flex-direction:column;align-items:stretch;gap:0;background:var(--bg);border-bottom:1px solid var(--line);padding:6px var(--pad) 14px;display:none}
+  nav.open{display:flex}
+  nav a{padding:12px 0;border-bottom:1px solid var(--line)}
+  nav a::after,nav .mark{display:none}
+  .hd-right .cv{display:none}
+  #menu-btn{display:inline-flex}
+}
+
+/* ---------- Bandeau + ligne d'infos ---------- */
+.top{padding-top:56px}
+.banner{display:flex;justify-content:center;padding:14px var(--pad);border-bottom:1px solid var(--line)}
+.banner a{display:flex;align-items:center;gap:14px;border:1px solid var(--line2);padding:8px 12px;text-decoration:none;max-width:100%}
+.banner a:hover{border-color:var(--fg)}
+.banner .sq{width:16px;height:16px;border:1px solid var(--fg);display:grid;place-items:center;font-size:8px;flex:none}
+.banner .w{margin-left:28px;color:var(--muted);white-space:nowrap}
+.info{display:grid;grid-template-columns:1fr 1fr 1.4fr auto;gap:20px;padding:14px var(--pad);border-bottom:1px solid var(--line)}
+.info b{display:block;font-weight:500;color:var(--fg)}
+.info span{color:var(--muted)}
+.info .clock{text-align:right}
+.info .clock b{font-variant-numeric:tabular-nums;letter-spacing:.2em}
+@media(max-width:800px){.info{grid-template-columns:1fr 1fr}.info .role{display:none}.banner .w{display:none}}
+
+/* ---------- Hero ---------- */
+.hero{position:relative;min-height:calc(100vh - 160px);display:flex;flex-direction:column;justify-content:flex-end;padding:40px var(--pad) 0;overflow:hidden;border-bottom:1px solid var(--line)}
+#halftone{position:absolute;inset:0;width:100%;height:100%;z-index:0}
+.hero>*:not(canvas){position:relative;z-index:1}
+.hero-row{display:flex;justify-content:space-between;align-items:flex-end;gap:30px;flex-wrap:wrap}
+.kicker{display:flex;align-items:center;gap:10px;margin-bottom:14px;color:var(--dim)}
+.kicker .dot{width:7px;height:7px;border-radius:50%;background:var(--fg);box-shadow:0 0 10px var(--fg)}
+.hero h1{font:300 clamp(48px,7vw,96px)/.92 var(--display);text-transform:uppercase;letter-spacing:-.01em}
+.pitch{width:min(420px,100%);border:1px solid var(--line2);background:#050505d9;padding:18px;backdrop-filter:blur(4px)}
+.pitch p{font-size:15px;color:var(--dim)}
+.pitch p b{color:var(--fg);font-weight:500}
+.pitch .btns{display:flex;gap:8px;margin-top:16px;flex-wrap:wrap}
+.btn{display:inline-flex;align-items:center;gap:8px;font:400 11px var(--mono);letter-spacing:.12em;text-transform:uppercase;text-decoration:none;padding:11px 16px;border:1px solid var(--line2);background:#111;color:var(--fg);cursor:pointer}
+.btn:hover{border-color:var(--fg)}
+.btn.light{background:var(--fg);color:var(--bg);border-color:var(--fg)}
+.btn.light:hover{background:#fff}
+.giant{display:flex;align-items:flex-end;margin-top:30px;line-height:.78;user-select:none}
+.giant .n{font:900 clamp(90px,21vw,330px)/.78 var(--wide);letter-spacing:-.03em;color:var(--fg)}
+.giant .v{writing-mode:vertical-rl;font:900 clamp(16px,2.3vw,36px)/1 var(--wide);letter-spacing:.02em;margin-left:.3em;padding-bottom:.2em}
+.hero-foot{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;border-top:1px solid var(--line);margin:22px calc(-1 * var(--pad)) 0;padding:14px var(--pad);color:var(--muted)}
+
+/* ---------- Bandeau défilant ---------- */
+.marquee{overflow:hidden;border-bottom:1px solid var(--line);padding:26px 0}
+.marquee .track{display:flex;gap:40px;width:max-content;animation:mq 40s linear infinite}
+.marquee span{font:300 clamp(46px,7vw,110px)/1 var(--display);text-transform:uppercase;white-space:nowrap}
+.marquee span.st{color:var(--faint)}
+@keyframes mq{to{transform:translateX(-50%)}}
+
+/* ---------- Sections ---------- */
+section.s{padding:90px var(--pad);border-bottom:1px solid var(--line)}
+.s-label{display:flex;gap:10px;color:var(--muted);margin-bottom:18px}
+.s-label b{color:var(--fg);font-weight:400}
+h2.big{font:300 clamp(52px,9vw,128px)/.9 var(--display);text-transform:uppercase;letter-spacing:-.01em;margin-bottom:34px}
+h3{font:400 clamp(28px,3.4vw,46px)/1 var(--display);letter-spacing:.005em}
+.lead{font:300 clamp(20px,2.2vw,30px)/1.3 var(--sans);max-width:900px}
+.lead b{font-weight:500}
+.cols{display:grid;grid-template-columns:1fr 380px;gap:60px;align-items:start}
+@media(max-width:1000px){.cols{grid-template-columns:1fr}}
+.body p{color:var(--dim);margin-top:18px;max-width:760px}
+
+/* Carte de profil (liste clé / valeur) */
+.kv{border:1px solid var(--line2)}
+.kv .hd{padding:10px 14px;border-bottom:1px solid var(--line);color:var(--muted)}
+.kv dl{display:grid;grid-template-columns:auto 1fr}
+.kv dt,.kv dd{padding:10px 14px;border-bottom:1px solid var(--line);font:400 11px var(--mono);letter-spacing:.1em;text-transform:uppercase}
+.kv dt{color:var(--muted)}
+.kv dd{text-align:right}
+.kv a.row{display:flex;justify-content:space-between;padding:14px;text-decoration:none;border-bottom:1px solid var(--line)}
+.kv a.row:last-child{border-bottom:0}
+.kv a.row:hover{background:var(--fg);color:var(--bg)}
+
+.chain{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin:26px 0 0}
+.chain b{font:400 11px var(--mono);letter-spacing:.12em;text-transform:uppercase;padding:7px 11px;border:1px solid var(--line2);font-weight:400}
+.chain b.me{background:var(--fg);color:var(--bg)}
+.chain i{color:var(--faint);font-style:normal}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);border:1px solid var(--line);margin-top:40px}
+.stats div{padding:22px;border-right:1px solid var(--line)}
+.stats div:last-child{border-right:0}
+.stats strong{display:block;font:200 clamp(56px,7vw,100px)/1 var(--display)}
+
+/* Lignes (chronologie, compétences) */
+.sub{display:flex;justify-content:space-between;align-items:baseline;margin:70px 0 0;padding-bottom:12px;border-bottom:1px solid var(--line2)}
+.rows>div{display:grid;grid-template-columns:160px 1fr 1fr 120px;gap:20px;padding:18px 0;border-bottom:1px solid var(--line);align-items:baseline}
+.rows h4{font:400 24px/1.1 var(--display)}
+.rows p{font-size:14px;color:var(--muted)}
+.rows .st{text-align:right}
+@media(max-width:800px){.rows>div{grid-template-columns:1fr}.rows .st{text-align:left}}
+.skills{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));border-left:1px solid var(--line);border-top:1px solid var(--line);margin-top:0}
+.skill{border-right:1px solid var(--line);border-bottom:1px solid var(--line);padding:22px}
+.skill .mono{color:var(--muted)}
+.skill h4{font:400 30px/1 var(--display);margin:8px 0 14px}
+.skill li{list-style:none;display:flex;flex-wrap:wrap;justify-content:space-between;gap:6px 12px;padding:9px 0;border-top:1px solid var(--line);font-size:14px}
+.skill .proj{display:flex;flex-wrap:wrap;gap:6px}
+.tag{font:400 10px var(--mono);letter-spacing:.1em;text-transform:uppercase;padding:3px 7px;border:1px solid var(--line2);background:none;color:var(--dim);cursor:pointer}
+button.tag:hover{background:var(--fg);color:var(--bg)}
+.note{font-size:12px;color:var(--muted);font-style:italic}
+
+/* ---------- Projets ---------- */
+.p-head{display:flex;justify-content:space-between;align-items:flex-end;gap:20px;flex-wrap:wrap;margin-bottom:24px}
+.filters{display:flex;flex-wrap:wrap;gap:6px}
+.filters button{font:400 10.5px var(--mono);letter-spacing:.1em;text-transform:uppercase;padding:8px 11px;background:none;color:var(--dim);border:1px solid var(--line2);cursor:pointer}
+.filters button:hover{border-color:var(--fg)}
+.filters button[aria-pressed=true]{background:var(--fg);color:var(--bg);border-color:var(--fg)}
+.track-wrap{position:relative;margin:0 calc(-1 * var(--pad))}
+.ptrack{display:flex;gap:0;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:thin;scrollbar-color:#333 transparent;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.pcard{flex:0 0 min(560px,86vw);scroll-snap-align:start;border-right:1px solid var(--line);padding:18px var(--pad) 24px;display:flex;flex-direction:column;cursor:pointer;background:var(--bg)}
+.pcard[hidden]{display:none}
+.pcard:hover .pix{filter:brightness(1.25)}
+.pcard .meta{display:flex;justify-content:space-between;color:var(--muted);margin-bottom:14px}
+.pix{aspect-ratio:16/10;border:1px solid var(--line);background:#080808;transition:filter .3s}
+.pix svg{width:100%;height:100%;display:block}
+.pcard h3{margin:20px 0 10px}
+.pcard p{font-size:14px;color:var(--dim)}
+.pcard .tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:14px}
+.pcard .act{display:flex;gap:8px;margin-top:auto;padding-top:18px}
+.track-nav{display:flex;justify-content:space-between;align-items:center;margin-top:16px;color:var(--muted)}
+.track-nav div{display:flex;gap:6px}
+#pcount{min-height:1.5em}
+
+dialog{margin:auto;width:min(900px,94vw);max-height:90vh;background:var(--bg);color:var(--fg);border:1px solid var(--line2);padding:0}
+dialog::backdrop{background:#000c;backdrop-filter:blur(4px)}
+dialog .in{padding:clamp(20px,4vw,44px);overflow:auto;max-height:90vh}
+dialog h2{font:300 clamp(40px,6vw,72px)/.95 var(--display);text-transform:uppercase;margin:10px 0 6px}
+dialog h4{font:400 11px var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--muted);margin:30px 0 10px;padding-bottom:8px;border-bottom:1px solid var(--line)}
+dialog p,dialog li{color:var(--dim);font-size:15px}
+dialog p+p{margin-top:10px}
+dialog ul,dialog ol{padding-left:20px}
+dialog li{margin:6px 0}
+dialog b{color:var(--fg);font-weight:500}
+dialog code{font-family:var(--mono);font-size:13px;border:1px solid var(--line2);padding:0 5px}
+dialog table{border-collapse:collapse;width:100%;font-size:14px}
+dialog td,dialog th{border:1px solid var(--line);padding:8px 10px;text-align:left}
+dialog th{font:400 11px var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+dialog a{text-underline-offset:3px}
+.x{position:sticky;top:0;float:right;margin:-6px -6px 0 0;width:38px;height:38px;background:var(--bg);border:1px solid var(--line2);color:var(--fg);font-size:16px;cursor:pointer;z-index:2}
+.x:hover{background:var(--fg);color:var(--bg)}
+.cmr{display:grid;grid-template-columns:repeat(3,1fr);border:1px solid var(--line);margin-top:20px}
+.cmr div{padding:16px;border-right:1px solid var(--line)}
+.cmr div:last-child{border-right:0}
+.cmr .mono{color:var(--muted)}
+.cmr p{font-size:14px;margin-top:6px}
+@media(max-width:700px){.cmr{grid-template-columns:1fr}.cmr div{border-right:0;border-bottom:1px solid var(--line)}}
+.shot{margin:16px 0}
+.shot img{border:1px solid var(--line2)}
+.shot figcaption{font:400 11px var(--mono);letter-spacing:.08em;color:var(--muted);margin-top:8px}
+.diag{border:1px solid var(--line);padding:12px;background:#080808}
+.diag svg{width:100%;height:auto;display:block}
+
+/* Maquettes téléphone (Carnet Fonte) */
+.phones{display:flex;gap:20px;justify-content:center;flex-wrap:wrap;margin:10px 0}
+.phone{width:220px;border-radius:28px;padding:8px;background:#1a1a1a;box-shadow:0 0 0 1px var(--line2)}
+.phone .scr{border-radius:21px;overflow:hidden;background:#0c0c0c;color:#e8e8e4;font:11.5px/1.35 var(--sans);height:470px;display:flex;flex-direction:column}
+.phone .notch{height:20px;display:flex;justify-content:center;align-items:center}
+.phone .notch i{width:60px;height:6px;border-radius:6px;background:#000}
+.app-top{padding:6px 13px 10px;display:flex;justify-content:space-between;align-items:flex-end;border-bottom:1px solid #222}
+.app-top b{font-size:14px}
+.app-top small{color:#8c8c88;display:block;font:9px var(--mono);letter-spacing:.1em;text-transform:uppercase}
+.app-top .chrono{font:500 15px var(--mono)}
+.app-body{padding:10px 11px;display:flex;flex-direction:column;gap:8px;flex:1;overflow:hidden}
+.ex{background:#161616;border-radius:10px;padding:9px}
+.ex h5{font:500 12px var(--sans);margin-bottom:2px}
+.ex .last{font-size:10px;color:#8c8c88;margin-bottom:5px}
+.set{display:grid;grid-template-columns:16px 1fr 1fr 30px 18px;gap:4px;align-items:center;padding:4px 0;border-top:1px solid #222;font-variant-numeric:tabular-nums}
+.set.hd{border:0;font:9px var(--mono);color:#777;text-transform:uppercase}
+.set .ok{width:16px;height:16px;border-radius:4px;display:grid;place-items:center;background:#f2f2ee;color:#050505;font-weight:700;font-size:10px}
+.set .ok.no{background:#2a2a2a;color:#777}
+.set.cur{background:#ffffff0d;border-radius:5px}
+.hint{font-size:10px;border:1px solid #333;border-radius:8px;padding:7px 9px;color:#cfcfca}
+.rest{margin-top:auto;display:flex;justify-content:space-between;align-items:center;background:#f2f2ee;color:#050505;border-radius:10px;padding:8px 11px;font-weight:600}
+.rest span{font:500 17px var(--mono)}
+.kpis{display:grid;grid-template-columns:1fr 1fr;gap:7px}
+.kpis div{background:#161616;border-radius:9px;padding:8px}
+.kpis b{display:block;font-size:15px}
+.kpis small{font-size:9px;color:#8c8c88}
+.chart{background:#161616;border-radius:10px;padding:9px}
+.chart h6{font:500 10.5px var(--sans);color:#cfcfca;margin-bottom:5px}
+.tabbar{display:flex;justify-content:space-around;border-top:1px solid #222;padding:8px 0 10px;font-size:9px;color:#777;text-align:center}
+.tabbar span.on{color:#f2f2ee}
+.tabbar i{display:block;font-style:normal;font-size:13px}
+
+/* ---------- E5 ---------- */
+.legend{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));border-top:1px solid var(--line);border-left:1px solid var(--line);margin-bottom:30px}
+.legend div{padding:12px 14px;border-right:1px solid var(--line);border-bottom:1px solid var(--line);font-size:14px;color:var(--dim)}
+.legend b{font:500 12px var(--mono);margin-right:10px;color:var(--fg)}
+.scroll{overflow-x:auto;border:1px solid var(--line)}
+table.e5{border-collapse:collapse;width:100%;min-width:780px;font-size:14px}
+.e5 th,.e5 td{border-bottom:1px solid var(--line);border-right:1px solid var(--line);padding:12px 14px;vertical-align:top;text-align:left}
+.e5 th{font:400 11px var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+.e5 td{color:var(--dim)}
+.e5 td.k{text-align:center;width:52px;color:var(--faint)}
+.e5 td.k.on{background:var(--fg);color:var(--bg);font-weight:600}
+.e5 td.sep{font:400 11px var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--fg);background:#ffffff08}
+.e5 .tag{margin-left:6px}
+.sr{position:absolute;left:-9999px}
+
+/* ---------- Veille ---------- */
+.vlist{border-top:1px solid var(--line2)}
+.vitem{display:grid;grid-template-columns:140px 1fr 200px;gap:24px;padding:24px 0;border-bottom:1px solid var(--line)}
+.vitem[hidden]{display:none}
+.vitem .when{color:var(--muted)}
+.vitem .when b{display:block;color:var(--fg);font-weight:400}
+.vitem h4{font:400 clamp(24px,2.4vw,32px)/1.05 var(--display);margin-bottom:8px}
+.vitem p{font-size:14px;color:var(--dim);max-width:760px}
+.vitem .src{text-align:right;display:flex;flex-direction:column;align-items:flex-end;gap:10px}
+.vitem .src a{text-decoration:none;border-bottom:1px solid var(--line2);padding-bottom:2px}
+.vitem .src a:hover{border-color:var(--fg)}
+.badges{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:10px}
+.badges span{font:400 10px var(--mono);letter-spacing:.1em;text-transform:uppercase;padding:2px 7px;border:1px solid var(--line2);color:var(--dim)}
+.badges span.inv{background:var(--fg);color:var(--bg);border-color:var(--fg)}
+@media(max-width:800px){.vitem{grid-template-columns:1fr;gap:10px}.vitem .src{align-items:flex-start;text-align:left}}
+.sources{display:flex;flex-wrap:wrap;gap:6px;margin-top:14px}
+
+/* ---------- Roadmap + globe ---------- */
+.road{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center}
+@media(max-width:1000px){.road{grid-template-columns:1fr}}
+.steps{border-top:1px solid var(--line2)}
+.step{display:grid;grid-template-columns:70px 1fr auto;gap:18px;padding:18px 0;border-bottom:1px solid var(--line);align-items:baseline}
+.step .num{font:200 44px/1 var(--display);color:var(--faint)}
+.step.now .num{color:var(--fg)}
+.step h4{font:400 26px/1.05 var(--display)}
+.step p{font-size:14px;color:var(--muted)}
+.step .st{white-space:nowrap}
+#globe{width:100%;aspect-ratio:1;display:block;max-width:620px;margin:auto}
+.flags{display:grid;grid-template-columns:repeat(3,1fr);border:1px solid var(--line);margin-top:30px}
+.flags div{padding:14px;border-right:1px solid var(--line)}
+.flags div:last-child{border-right:0}
+.flags b{display:block;font:400 22px var(--display)}
+.flags span{font-size:13px;color:var(--muted)}
+@media(max-width:600px){.flags{grid-template-columns:1fr}.flags div{border-right:0;border-bottom:1px solid var(--line)}}
+
+/* ---------- Contact ---------- */
+.mail{display:inline-flex;align-items:center;gap:18px;font:200 clamp(30px,5vw,64px)/1.1 var(--display);text-decoration:none;border-bottom:1px solid var(--line2);padding-bottom:6px;word-break:break-all}
+.mail:hover{border-color:var(--fg)}
+.clist{border-top:1px solid var(--line2);margin-top:50px}
+.clist a,.clist div{display:grid;grid-template-columns:120px 1fr auto;gap:16px;padding:18px 0;border-bottom:1px solid var(--line);text-decoration:none;align-items:center}
+.clist a:hover{padding-left:12px;transition:padding .25s}
+.clist .k{color:var(--muted)}
+.clist .v{font-size:17px}
+@media(max-width:600px){.clist a,.clist div{grid-template-columns:1fr auto}.clist .k{display:none}}
+
+footer{display:flex;justify-content:space-between;gap:14px;flex-wrap:wrap;padding:22px var(--pad);color:var(--muted)}
+.to-top{position:fixed;right:var(--pad);bottom:20px;z-index:30;width:38px;height:38px;display:grid;place-items:center;border:1px solid var(--line2);background:var(--bg);color:var(--fg);text-decoration:none;opacity:0;pointer-events:none;transition:opacity .3s}
+.to-top.on{opacity:1;pointer-events:auto}
+.to-top:hover{background:var(--fg);color:var(--bg)}
+
+/* Apparition au défilement */
+.rv{opacity:0;transform:translateY(24px);transition:opacity .9s cubic-bezier(.2,.7,.2,1),transform .9s cubic-bezier(.2,.7,.2,1)}
+.rv.seen{opacity:1;transform:none}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important;scroll-behavior:auto!important}.rv{opacity:1;transform:none}}
+</style>
+</head>
+<body>
+
+<header>
+  <a class="logo-txt" href="#top">LOÏC.BODET</a>
+  <nav id="nav" aria-label="Navigation principale">
+    <a href="#parcours"><i>01</i>Parcours</a>
+    <a href="#projets"><i>02</i>Projets</a>
+    <a href="#e5"><i>03</i>Tableau E5</a>
+    <a class="mark" href="#top" aria-label="Haut de page">LB</a>
+    <a href="#veille"><i>04</i>Veille</a>
+    <a href="#roadmap"><i>05</i>Roadmap</a>
+    <a href="#contact"><i>06</i>Contact</a>
+  </nav>
+  <div class="hd-right">
+    <a class="chip cv" href="CV%20Bodet%20Loic.pdf" target="_blank" rel="noopener">CV ↗</a>
+    <button class="chip" id="menu-btn" type="button" aria-expanded="false" aria-controls="nav">Menu</button>
+  </div>
+</header>
+
+<main id="top" class="top">
+  <div class="banner">
+    <a href="#contact" class="mono"><span class="sq" aria-hidden="true">✉</span>Un stage, une alternance, une question ? — Écris-moi<span class="w">Contact →</span></a>
+  </div>
+  <div class="info mono">
+    <div><b>Loïc</b><span>Bodet</span></div>
+    <div><b>Villeurbanne</b><span>Auvergne-Rhône-Alpes</span></div>
+    <div class="role"><b>Gestionnaire IT · alternance</b><span>Systèmes · Réseau · Active Directory · M365</span></div>
+    <div class="clock"><span>Heure locale</span><b id="clock">--:--</b></div>
+  </div>
+
+  <!-- ======== HERO ======== -->
+  <section class="hero" aria-labelledby="h-hero">
+    <canvas id="halftone" aria-hidden="true"></canvas>
+    <div class="hero-row">
+      <div>
+        <div class="kicker mono"><span class="dot" aria-hidden="true"></span>[ 00 ] · BTS SIO option SISR</div>
+        <h1 id="h-hero">Administrer<br>les systèmes<br>au quotidien</h1>
+      </div>
+      <div class="pitch">
+        <p>J'accompagne <b>160 collaborateurs</b>, j'administre un <b>NAS de 10 To</b> et je participe à la <b>refonte des droits de l'Active Directory</b> chez INEO RHT.</p>
+        <div class="btns">
+          <a class="btn" href="#projets">Voir mes projets</a>
+          <a class="btn light" href="#contact">Me contacter →</a>
+        </div>
+      </div>
+    </div>
+    <div class="giant" aria-hidden="true"><span class="n">LOÏC</span><span class="v">BODET</span></div>
+    <div class="hero-foot mono"><span>Alternant Gestionnaire IT · Nexa Digital School — 2026</span><span>INEO RHT · Groupe Equans</span></div>
+  </section>
+
+  <div class="marquee" aria-hidden="true"><div class="track" id="mq"></div></div>
+
+  <!-- ======== 01 PARCOURS ======== -->
+  <section class="s" id="parcours" aria-labelledby="h-parcours">
+    <div class="s-label mono rv"><b>[ 01 / 06 ]</b>·<span>Parcours</span></div>
+    <h2 class="big rv" id="h-parcours">Du terrain à l'infra</h2>
+    <div class="cols">
+      <div class="body rv">
+        <p class="lead">Alternant <b>Gestionnaire IT chez INEO RHT</b>, je suis le support informatique des collaborateurs équipés : <b>hardware en priorité</b>, software ponctuellement.</p>
+        <p>INEO RHT est une société du groupe Equans, lui-même filiale du groupe Bouygues. Elle est spécialisée dans la mise en place de pylônes électriques à haute tension.</p>
+        <p>En parallèle, je prépare le BTS Services Informatiques aux Organisations, option SISR, à la Nexa Digital School, et les certifications Microsoft Azure.</p>
+        <div class="chain"><b>Groupe Bouygues</b><i>›</i><b>Equans</b><i>›</i><b>INEO RHT</b><i>›</i><b class="me">Moi : support IT</b></div>
+      </div>
+      <div class="kv rv">
+        <div class="hd mono">Profil</div>
+        <dl>
+          <dt>Basé à</dt><dd>Villeurbanne</dd>
+          <dt>Rôle</dt><dd>Gestionnaire IT</dd>
+          <dt>Chez</dt><dd>INEO RHT</dd>
+          <dt>Formation</dt><dd>BTS SIO · SISR</dd>
+          <dt>École</dt><dd>Nexa Digital School</dd>
+        </dl>
+        <a class="row mono" href="CV%20Bodet%20Loic.pdf" target="_blank" rel="noopener"><span>Voir mon CV</span><span>PDF ↗</span></a>
+        <a class="row mono" href="https://www.linkedin.com/in/loic-bodet/" target="_blank" rel="noopener"><span>LinkedIn</span><span>↗</span></a>
+      </div>
+    </div>
+    <div class="stats rv">
+      <div><strong>160</strong><span class="mono muted">Collaborateurs équipés</span></div>
+      <div><strong>HW</strong><span class="mono muted">Support principal</span></div>
+      <div><strong>SW</strong><span class="mono muted">Support ponctuel</span></div>
+    </div>
+
+    <div class="sub mono rv"><span>Formations</span><span class="muted">002</span></div>
+    <div class="rows" id="m-formation"></div>
+    <div class="sub mono rv"><span>Expériences</span><span class="muted">003</span></div>
+    <div class="rows" id="m-experience"></div>
+
+    <div class="sub mono rv"><span>Compétences — chacune renvoie aux projets où je l'ai mise en pratique</span><span class="muted">005</span></div>
+    <div class="skills" id="skills"></div>
+  </section>
+
+  <!-- ======== 02 PROJETS ======== -->
+  <section class="s" id="projets" aria-labelledby="h-projets">
+    <div class="s-label mono rv"><b>[ 02 / 06 ]</b>·<span>Projets</span></div>
+    <div class="p-head">
+      <h2 class="big rv" id="h-projets" style="margin:0">Mes projets</h2>
+      <p class="muted rv" style="max-width:340px;font-size:14px">En entreprise, en formation et en perso. Ouvre une fiche pour le détail, ou filtre par compétence du référentiel E5.</p>
+    </div>
+    <div class="filters rv" id="pfilters" role="group" aria-label="Filtrer les projets par compétence E5"></div>
+    <p id="pcount" class="mono muted" aria-live="polite" style="margin:12px 0"></p>
+    <div class="track-wrap">
+      <div class="ptrack" id="ptrack" tabindex="0" aria-label="Liste des projets, défilement horizontal"></div>
+    </div>
+    <div class="track-nav mono"><span id="ppos">Faire défiler →</span><div><button class="btn" type="button" data-scroll="-1" aria-label="Projet précédent">←</button><button class="btn" type="button" data-scroll="1" aria-label="Projet suivant">→</button></div></div>
+  </section>
+
+  <!-- ======== 03 E5 ======== -->
+  <section class="s" id="e5" aria-labelledby="h-e5">
+    <div class="s-label mono rv"><b>[ 03 / 06 ]</b>·<span>Tableau de synthèse</span></div>
+    <h2 class="big rv" id="h-e5">Épreuve E5</h2>
+    <div class="p-head rv">
+      <p class="lead" style="font-size:clamp(18px,1.8vw,24px)">BTS Services Informatiques aux Organisations, session 2026 · option SISR · Nexa Digital School.</p>
+      <a class="btn light" href="E5%20-%20Tableau%20de%20synth%C3%A8se.pdf" target="_blank" rel="noopener">Ouvrir le tableau (PDF) ↗</a>
+    </div>
+    <div class="legend rv" id="legend"></div>
+    <div class="scroll rv"><table class="e5" id="e5t"></table></div>
+  </section>
+
+  <!-- ======== 04 VEILLE ======== -->
+  <section class="s" id="veille" aria-labelledby="h-veille">
+    <div class="s-label mono rv"><b>[ 04 / 06 ]</b>·<span>Veille technologique</span></div>
+    <h2 class="big rv" id="h-veille">Ce qui bouge</h2>
+    <p class="lead rv" style="margin-bottom:34px">Les actualités marquantes des six derniers mois : intelligence artificielle, systèmes, cybersécurité, cloud. Classées par spécialité, avec un lien vers chaque source.</p>
+    <div class="filters rv" id="vfilters" role="group" aria-label="Filtrer par spécialité" style="margin-bottom:24px"></div>
+    <div class="vlist" id="vlist"></div>
+    <div class="sub mono rv"><span>Mes sources</span><span class="muted" id="vsn"></span></div>
+    <div class="sources" id="vsources"></div>
+  </section>
+
+  <!-- ======== 05 ROADMAP ======== -->
+  <section class="s" id="roadmap" aria-labelledby="h-roadmap">
+    <div class="s-label mono rv"><b>[ 05 / 06 ]</b>·<span>Feuille de route</span></div>
+    <h2 class="big rv" id="h-roadmap">Ma feuille de route</h2>
+    <div class="road">
+      <div>
+        <p class="lead rv" style="margin-bottom:30px">Grimper les échelons, de mon BTS jusqu'à une carrière à l'international.</p>
+        <div class="steps rv">
+          <div class="step now"><span class="num">01</span><div><h4>BTS SIO option SISR</h4><p>Nexa Digital School, en alternance chez INEO RHT (2025 – 2027).</p></div><span class="st mono">● En cours</span></div>
+          <div class="step now"><span class="num">02</span><div><h4>Certifications Microsoft Azure</h4><p>Cette année, en parallèle du BTS.</p></div><span class="st mono">● En cours</span></div>
+          <div class="step"><span class="num">03</span><div><h4>Licence pro Administration systèmes</h4><p>Après le BTS.</p></div><span class="st mono muted">○ À venir</span></div>
+          <div class="step"><span class="num">04</span><div><h4>Master Administration systèmes &amp; Cybersécurité</h4><p>Pour aller plus loin dans l'infrastructure et la sécurité.</p></div><span class="st mono muted">○ À venir</span></div>
+          <div class="step"><span class="num">★</span><div><h4>Carrière à l'international</h4><p>Dans un pays très avancé technologiquement.</p></div><span class="st mono muted">○ Objectif</span></div>
+        </div>
+      </div>
+      <canvas id="globe" class="rv" role="img" aria-label="Globe en points : Villeurbanne et les régions visées, Allemagne et Suisse"></canvas>
+    </div>
+    <div class="flags rv">
+      <div><span class="mono muted">Région visée</span><b>Allemagne</b><span>Industrie et infrastructures</span></div>
+      <div><span class="mono muted">Région visée</span><b>Suisse</b><span>Finance, hébergement, sécurité</span></div>
+      <div><span class="mono muted">Région visée</span><b>Autres pays</b><span>À compléter</span></div>
+    </div>
+  </section>
+
+  <!-- ======== 06 CONTACT ======== -->
+  <section class="s" id="contact" aria-labelledby="h-contact">
+    <div class="s-label mono rv"><b>[ 06 / 06 ]</b>·<span>Contact</span></div>
+    <h2 class="big rv" id="h-contact">Rejoins mon lobby</h2>
+    <a class="mail rv" href="mailto:loic95110@gmail.com">loic95110@gmail.com <span aria-hidden="true">↗</span></a>
+    <p class="lead rv" style="margin-top:30px;font-size:clamp(18px,1.8vw,24px)">Un stage, une alternance, une question : envoie-moi une invitation.</p>
+    <div class="clist rv">
+      <a href="mailto:loic95110@gmail.com"><span class="k mono">E-mail</span><span class="v">loic95110@gmail.com</span><span aria-hidden="true">↗</span></a>
+      <a href="https://www.linkedin.com/in/loic-bodet/" target="_blank" rel="noopener"><span class="k mono">LinkedIn</span><span class="v">linkedin.com/in/loic-bodet</span><span aria-hidden="true">↗</span></a>
+      <a href="https://github.com/Ghouly-alt" target="_blank" rel="noopener"><span class="k mono">GitHub</span><span class="v">github.com/Ghouly-alt</span><span aria-hidden="true">↗</span></a>
+      <a href="CV%20Bodet%20Loic.pdf" target="_blank" rel="noopener"><span class="k mono">CV</span><span class="v">Ouvrir le PDF</span><span aria-hidden="true">↗</span></a>
+      <div><span class="k mono">Base</span><span class="v">Villeurbanne, Auvergne-Rhône-Alpes</span><span aria-hidden="true">◎</span></div>
+    </div>
+  </section>
+</main>
+
+<footer class="mono"><span>© 2026 Loïc Bodet · Portfolio BTS SIO SISR</span><a href="#top" style="text-decoration:none">Haut de page ↑</a></footer>
+<a class="to-top" id="to-top" href="#top" aria-label="Revenir en haut">↑</a>
+
+<dialog id="dlg" aria-labelledby="dlg-t"><div class="in"><button class="x" id="dlg-x" aria-label="Fermer">✕</button><div id="dlg-in"></div></div></dialog>
+
+<script>
+/* ===== DONNÉES (à modifier ici) ===== */
+// type : 'formation' ou 'experience' · done : true = terminé, false = en cours
+const MATCHES = [
+  {type:'formation',  done:false, when:'2025 – 2027', title:'BTS SIO — option SISR', org:'Nexa Digital School', desc:'Services Informatiques aux Organisations, en alternance chez INEO RHT.'},
+  {type:'formation',  done:true,  when:'2020',        title:'Baccalauréat S', org:'Lycée Marie de Champagne · Troyes', desc:''},
+  {type:'experience', done:false, when:'2025 – 2026', title:'Gestionnaire IT (alternance)', org:'INEO RHT · Villeurbanne', desc:'Gestion des appareils informatiques des collaborateurs.'},
+  {type:'experience', done:true,  when:'2022 – 2023', title:'Employé polyvalent', org:'Carrefour Market · Reims', desc:'Caisse, mise en rayon, réassort, facing.'},
+  {type:'experience', done:true,  when:'2021 – 2024', title:'Manutentionnaire (intérim)', org:'Arena de Reims', desc:'Mise en place des salles de concert, travail en équipe sur chantier.'}
+];
+
+const MARQUEE = ['Administrer','Sécuriser','Accompagner','Automatiser'];
+
+/* VEILLE — date au format AAAA-MM-JJ · cat : clé de VEILLE_CATS */
+const VEILLE_CATS = [
+  {id:'cyber',   label:'Cybersécurité',                sub:'Failles, attaques, défense, avec ou sans IA'},
+  {id:'systeme', label:'Systèmes & virtualisation',    sub:'Windows, Linux, hyperviseurs, mises à jour'},
+  {id:'cloud',   label:'Cloud & infrastructures',      sub:'Datacenters, disponibilité, pannes'},
+  {id:'agents',  label:'Agents IA en entreprise',      sub:'Des assistants qui agissent seuls dans le SI'},
+  {id:'regl',    label:'Réglementation & souveraineté',sub:'Lois, accords et interdictions autour de l\'IA'}
+];
+const VEILLE = [
+  {ia:true, cat:'agents', date:'2026-09-29', title:'OpenAI lance Dots, des agents IA qui travaillent en continu',
+   text:'Présentés au DevDay, les « Dots » sont des agents persistants : chacun dispose de son propre ordinateur dans le cloud, se connecte à des milliers d\'applications et continue de travailler après la déconnexion de l\'utilisateur. Pour un service informatique, cela pose la question des droits et de la supervision de ces nouveaux « collaborateurs ».',
+   source:'SiliconANGLE', url:'https://siliconangle.com/2026/09/29/openai-launches-dots-always-on-ai-agents-in-chatgpt-with-their-own-cloud-computers/'},
+  {ia:true, cat:'cyber', date:'2026-10-19', title:'Microsoft : traiter les agents IA comme des menaces internes',
+   text:'Microsoft demande aux équipes sécurité de considérer les agents autonomes comme des employés à privilèges : ils peuvent se tromper, être manipulés ou compromis. Inventaire des agents, droits limités avant chaque action et surveillance continue deviennent la norme.',
+   source:'Dark Reading', url:'https://darkreading.com/cybersecurity-operations/ai-agents-insider-threats-inside-microsoft-unified-security-stack'},
+  {ia:true, cat:'regl', date:'2026-08-02', title:'AI Act : la transparence obligatoire, le haut risque repoussé',
+   text:'Depuis le 2 août 2026, chatbots et contenus générés par IA doivent être signalés comme tels. L\'« omnibus numérique » repousse en revanche au 2 décembre 2027 les obligations pour les systèmes d\'IA à haut risque.',
+   source:'Blog du Modérateur', url:'https://blogdumoderateur.com/ia-act-2-aout-2026'},
+  {ia:true, cat:'cyber', date:'2026-10-08', title:'Anthropic ouvre un scanner de vulnérabilités gratuit par IA',
+   text:'OSS Scanner analyse gratuitement le code des projets open source critiques avec des modèles d\'IA, sur le modèle d\'OSS-Fuzz de Google. Les rapports ne sont pas relus par un humain : des milliers de failles signalées, mais une petite partie seulement corrigée.',
+   source:'The Hacker News', url:'https://thehackernews.com/2026/10/anthropic-launches-free-ai.html'},
+  {ia:true, cat:'cyber', date:'2026-09-30', title:'Google réserve son nouveau modèle Gemini 4 Argon aux défenseurs',
+   text:'Conçu notamment pour la cyberdéfense (découverte de failles, correctifs automatiques), Gemini 4 Argon est d\'abord ouvert à des équipes de sécurité de confiance, le temps de valider ses garde-fous avant une diffusion plus large.',
+   source:'Google', url:'https://blog.google/innovation-and-ai/technology/ai/google-ai-updates-september-2026/'},
+  {ia:true, cat:'agents', date:'2026-09-28', title:'Meta se lance sur le marché de l\'IA pour les entreprises',
+   text:'Avec Meta Enterprise Platform, Meta propose aux entreprises toute sa pile IA, dont son agent Muse et des outils de code. La concurrence s\'intensifie face à Microsoft, Google et OpenAI sur les agents professionnels.',
+   source:'Meta', url:'https://about.fb.com/news/2026/09/launching-meta-enterprise-platform/'},
+  {ia:true, cat:'regl', date:'2026-10-20', title:'Les États-Unis bannissent DeepSeek des administrations civiles',
+   text:'Le département de la Sécurité intérieure ordonne de retirer les produits DeepSeek, y compris les outils tiers construits dessus, des systèmes des agences fédérales civiles, au nom de la sécurité de la chaîne d\'approvisionnement.',
+   source:'BleepingComputer', url:'https://bleepingcomputer.com/news/security/dhs-bans-deepseek-products-across-us-federal-civilian-agencies'},
+  {ia:true, cat:'regl', date:'2026-09-29', title:'Accord volontaire sur la sécurité de l\'IA à la Maison Blanche',
+   text:'Les dirigeants des grands acteurs de l\'IA s\'engagent à faire auditer leurs systèmes par des tiers indépendants. L\'accord n\'est assorti d\'aucune sanction ni échéance, ce que critiquent de nombreux chercheurs.',
+   source:'SiliconANGLE', url:'https://siliconangle.com/2026/09/30/prominent-tech-ceos-sign-voluntary-white-house-ai-safety-accord/'},
+  {cat:'systeme', date:'2026-10-13', title:'Patch Tuesday record : plus de 1 400 failles corrigées',
+   text:'Microsoft a publié un nombre record de correctifs en octobre, dont une faille Windows déjà exploitée qui contourne la protection « Mark of the Web » et une faille critique du rôle Serveur DHCP exploitable à distance sans authentification. Mois de fin des mises à jour étendues (ESU) pour Windows Server 2012 et 2012 R2.',
+   source:'BleepingComputer', url:'https://www.bleepingcomputer.com/news/microsoft/microsoft-october-2026-patch-tuesday-fixes-1-411-flaws-3-zero-days/'},
+  {cat:'systeme', date:'2026-05-21', title:'Proxmox VE 9.2 et fin de support de Proxmox VE 8',
+   text:'Proxmox VE 9.2 passe sur Debian 13 et le noyau Linux 7.0 par défaut. Proxmox VE 8 n\'est plus maintenu depuis le 31 août 2026 : les serveurs encore en version 8 ne reçoivent plus de correctifs de sécurité et doivent être migrés.',
+   source:'Forum Proxmox', url:'https://forum.proxmox.com/threads/proxmox-virtual-environment-9-2-available.183742/'},
+  {cat:'cyber', date:'2026-09-07', title:'L\'ANSSI lance REACTIV pour les services de l\'État',
+   text:'À la demande du Premier ministre, l\'ANSSI met en place une capacité renforcée de réaction et d\'intervention : elle peut imposer des mesures d\'urgence aux ministères après une fuite de données ou une compromission.',
+   source:'IT-Connect', url:'https://www.it-connect.fr/anssi-reactiv-violations-donnees-services-etat/'},
+  {cat:'cyber', date:'2026-10-28', title:'Fuite de données à la Compagnie des transports strasbourgeois',
+   text:'La CTS confirme le vol de données d\'environ 230 000 comptes clients (identité, date de naissance, adresse). Un rappel concret de l\'importance de la segmentation, de la journalisation et de la notification à la CNIL sous 72 heures.',
+   source:'Anadolu', url:'https://www.aa.com.tr/fr/france/france-une-cyberattaque-contre-la-compagnie-des-transports-strasbourgeois-expose-les-donn%C3%A9es-de-230-000-clients/4104368'},
+  {cat:'cloud', date:'2026-05-07', title:'AWS : une panne de refroidissement paralyse une zone de us-east-1',
+   text:'Un incident thermique a coupé l\'alimentation d\'un bâtiment de la zone use1-az4 : instances EC2 et volumes EBS indisponibles pendant près d\'une journée, avec des services comme Coinbase touchés. Une bonne illustration de l\'intérêt de répartir ses ressources sur plusieurs zones.',
+   source:'DatacenterDynamics', url:'https://www.datacenterdynamics.com/en/news/aws-experiences-power-issues-at-northern-virginia-cloud-region/'}
+];
+const VEILLE_SOURCES = ['The Hacker News','BleepingComputer','Dark Reading','IT-Connect','SiliconANGLE','DatacenterDynamics','Blog du Modérateur','CERT-FR','ANSSI','dcod.ch'];
+
+/* PROJETS — ctx : clé de PROJECT_CTX · e5 : colonnes du tableau E5 validées (0 = C1 … 5 = C6) */
+const PROJECT_CTX = {pro:'En entreprise · INEO RHT', formation:'En formation', perso:'Projet personnel'};
+
+// Schémas (monochromes, sans données confidentielles)
+const W='#f2f2ee', G='#8c8c88', P='#0e0e0e';
+const AGDLP_SVG = `<svg viewBox="0 0 640 170" role="img" aria-label="Schéma AGDLP : comptes, groupe global, groupe de domaine local, permissions sur le dossier">
+  ${[['A','Comptes','m.dupont · s.martin',20],['G','Groupe global','GG_Comptabilite',180],['DL','Domaine local','DL_Compta_Modif',340],['P','Permissions NTFS','Dossier Compta : Modifier',500]].map(([k,t,s,x],i)=>`
+  <g transform="translate(${x},30)">
+    <rect width="120" height="110" fill="${P}" stroke="${i===3?W:'#444'}" stroke-width="1"/>
+    <rect x="40" y="12" width="40" height="34" fill="${i===3?W:'none'}" stroke="${W}"/>
+    <text x="60" y="35" text-anchor="middle" font-family="Geist Mono,monospace" font-size="14" fill="${i===3?'#050505':W}">${k}</text>
+    <text x="60" y="72" text-anchor="middle" font-family="Geist,sans-serif" font-weight="500" font-size="12" fill="${W}">${t}</text>
+    <text x="60" y="92" text-anchor="middle" font-family="Geist Mono,monospace" font-size="8.5" fill="${G}">${s}</text>
+  </g>${i<3?`<path d="M${x+126} 85h30" stroke="${G}" stroke-width="1"/><polygon points="${x+154},81 ${x+162},85 ${x+154},89" fill="${G}"/>`:''}`).join('')}
+  <text x="320" y="164" text-anchor="middle" font-family="Geist Mono,monospace" font-size="9" fill="${G}">« MEMBRE DE » →</text>
+</svg>`;
+const box=(x,y,w,h,l,s,hi)=>`<rect x="${x}" y="${y}" width="${w}" height="${h}" fill="${P}" stroke="${hi?W:'#444'}"/>
+  <text x="${x+w/2}" y="${y+(s?h/2-2:h/2+4)}" text-anchor="middle" font-family="Geist,sans-serif" font-weight="500" font-size="12" fill="${W}">${l}</text>
+  ${s?`<text x="${x+w/2}" y="${y+h/2+14}" text-anchor="middle" font-family="Geist Mono,monospace" font-size="9" fill="${G}">${s}</text>`:''}`;
+const ln=(a,b,c,d)=>`<line x1="${a}" y1="${b}" x2="${c}" y2="${d}" stroke="${G}" stroke-width="1"/>`;
+const svg=(inner,label)=>`<svg viewBox="0 0 400 190" role="img" aria-label="${label}">${inner}</svg>`;
+const VISUALS = {
+  infra: svg(`<rect x="20" y="14" width="360" height="162" fill="none" stroke="#333" stroke-dasharray="4 4"/>
+    <text x="32" y="32" font-family="Geist Mono,monospace" font-size="9" letter-spacing="2" fill="${G}">PROXMOX VE · VLAN 800</text>
+    ${box(40,56,140,52,'AD-DC','Windows Server 2022')}${box(220,56,140,52,'Client2','Poste du domaine')}${ln(180,82,220,82)}
+    ${box(110,126,180,36,'gsblolo.local · 8 services','',1)}${ln(110,108,140,126)}${ln(290,108,260,126)}`,'Schéma de l\'infrastructure GSB sous Proxmox'),
+  routage: svg(`${ln(200,46,90,140)}${ln(200,46,310,140)}${ln(90,140,310,140)}
+    ${[[200,46,'R1'],[90,140,'R2'],[310,140,'R3']].map(([x,y,n])=>`<circle cx="${x}" cy="${y}" r="22" fill="${P}" stroke="${W}"/><path d="M${x-9} ${y}h18M${x} ${y-9}v18" stroke="${W}"/><text x="${x}" y="${y+38}" text-anchor="middle" font-family="Geist Mono,monospace" font-size="11" fill="${W}">${n}</text>`).join('')}
+    <text x="122" y="88" font-family="Geist Mono,monospace" font-size="10" fill="${G}" transform="rotate(-40 122 88)">OSPF</text>
+    <text x="262" y="78" font-family="Geist Mono,monospace" font-size="10" fill="${G}" transform="rotate(40 262 78)">OSPF</text>
+    <text x="200" y="134" text-anchor="middle" font-family="Geist Mono,monospace" font-size="10" fill="${G}">RIP</text>`,'Trois routeurs Cisco reliés en RIP et OSPF'),
+  tickets: svg(`<rect x="24" y="16" width="170" height="160" fill="${P}" stroke="#444"/><rect x="24" y="16" width="170" height="24" fill="${W}"/>
+    <text x="34" y="32" font-family="Geist,sans-serif" font-weight="500" font-size="11" fill="#050505">Demande d'assistance</text>
+    ${['Nom','Catégorie','Description'].map((l,i)=>`<text x="36" y="${60+i*34}" font-family="Geist Mono,monospace" font-size="8" fill="${G}">${l.toUpperCase()}</text><rect x="36" y="${64+i*34}" width="146" height="${i===2?26:14}" fill="none" stroke="#444"/>`).join('')}
+    <rect x="36" y="156" width="60" height="14" fill="${W}"/><text x="66" y="166" text-anchor="middle" font-family="Geist Mono,monospace" font-size="7.5" fill="#050505">ENVOYER</text>
+    ${[['Écran HS','✔ Résolu'],['Accès dossier','● En cours'],['PC lent','○ Nouveau']].map(([t,s],i)=>`<rect x="214" y="${26+i*50}" width="162" height="40" fill="${P}" stroke="#444"/>
+      <text x="226" y="${43+i*50}" font-family="Geist,sans-serif" font-weight="500" font-size="11" fill="${W}">${t}</text>
+      <text x="226" y="${57+i*50}" font-family="Geist Mono,monospace" font-size="8.5" fill="${G}">${s.toUpperCase()}</text>`).join('')}`,'Maquette du formulaire SharePoint et de la liste des tickets'),
+  intranet: svg(`<rect x="24" y="14" width="352" height="162" fill="${P}" stroke="#444"/><rect x="24" y="14" width="352" height="22" fill="${W}"/>
+    <text x="36" y="29" font-family="Geist,sans-serif" font-weight="500" font-size="11" fill="#050505">Intranet de l'entreprise</text>
+    <rect x="40" y="50" width="200" height="66" fill="#1a1a1a"/><text x="52" y="72" font-family="Geist,sans-serif" font-weight="500" font-size="12" fill="${W}">Actualités</text>
+    <rect x="52" y="82" width="140" height="5" fill="#444"/><rect x="52" y="94" width="110" height="5" fill="#444"/>
+    ${[['Documents',50],['Outils',92],['Contacts',134]].map(([t,y])=>`<rect x="254" y="${y}" width="106" height="34" fill="none" stroke="#444"/><text x="307" y="${y+21}" text-anchor="middle" font-family="Geist,sans-serif" font-size="11" fill="${W}">${t}</text>`).join('')}
+    ${[0,1,2].map(i=>`<rect x="${40+i*68}" y="128" width="60" height="38" fill="none" stroke="#444"/>`).join('')}`,'Maquette de la page d\'accueil d\'un intranet SharePoint'),
+  parc: svg(`${box(150,18,100,40,'Serveur','',1)}${ln(200,58,200,84)}${box(130,84,140,30,'Commutateur')}
+    ${[40,130,220,310].map((x,i)=>`${ln(200,114,x+25,140)}<rect x="${x}" y="140" width="50" height="32" fill="${P}" stroke="${i===2?W:'#444'}"/><rect x="${x+8}" y="146" width="34" height="18" fill="#1a1a1a"/>${i===2?`<rect x="${x+38}" y="134" width="16" height="16" fill="${W}"/><text x="${x+46}" y="146" text-anchor="middle" font-family="Geist Mono,monospace" font-size="11" fill="#050505">!</text>`:''}`).join('')}
+    <text x="20" y="34" font-family="Geist Mono,monospace" font-size="9" letter-spacing="2" fill="${G}">PARC GSB</text>
+    <text x="380" y="34" text-anchor="end" font-family="Geist Mono,monospace" font-size="9" fill="${W}">! 1 INCIDENT</text>`,'Parc informatique avec un poste en incident')
+};
+
+/* CONTEXTE → MISSION → RÉSULTAT de chaque projet */
+const CMR = {
+  p1:{c:'Besoin personnel : suivre mes séances de musculation et savoir quoi viser à la séance suivante, depuis mon téléphone.',
+      m:'Concevoir et développer seul une application web complète : saisie des séances, algorithme de progression, statistiques, sauvegarde et synchronisation.',
+      r:'Application utilisée à la salle, avec plus de 360 exercices et une progression calculée automatiquement.'},
+  p2:{c:'L\'organisation GSB a besoin d\'un annuaire centralisé pour l\'authentification et la gestion des postes de ses 8 services.',
+      m:'Virtualiser l\'infrastructure sous Proxmox, installer Windows Server 2022, créer le domaine Active Directory et automatiser la création des comptes en PowerShell.',
+      r:'Point 1 terminé : domaine gsblolo.local opérationnel, comptes importés par script, poste client joint au domaine.'},
+  nas:{c:'Une agence de l\'entreprise n\'avait pas d\'espace centralisé pour sauvegarder ses archives.',
+      m:'Mettre en place un NAS Synology d\'environ 10 To et l\'administrer : comptes, groupes, dossiers partagés et droits d\'accès.',
+      r:'NAS en production : environ 9 To d\'archives centralisées, accès contrôlés par groupe.'},
+  agdlp:{c:'Les droits sur les dossiers partagés étaient donnés utilisateur par utilisateur : difficile à maintenir et à auditer.',
+      m:'Réorganiser les accès selon la méthode AGDLP : groupes globaux par service, groupes de domaine local par ressource, permissions NTFS sur ces groupes.',
+      r:'En cours : chaque arrivée, départ ou changement de poste se gérera par un simple ajout ou retrait de groupe.'},
+  tickets:{c:'Besoin de centraliser et de suivre les demandes d\'assistance des collaborateurs.',
+      m:'Mettre en place un formulaire SharePoint par lequel les collaborateurs déposent leurs demandes.',
+      r:'Les demandes arrivent au même endroit, peuvent être priorisées et gardent une trace.'},
+  sharepoint:{c:'L\'entreprise veut développer son SharePoint interne pour regrouper informations et documents.',
+      m:'Participer au développement du site, en mode projet.',
+      r:'Projet en cours.'},
+  gsb:{c:'Mission en formation dans le contexte de l\'organisation Global Swiss Bourdin.',
+      m:'Gérer le patrimoine informatique et répondre aux incidents et aux demandes d\'assistance.',
+      r:'Mission réalisée en deux jours, documentation disponible sur Google Drive.'},
+  cisco:{c:'TP de formation sur le routage entre plusieurs réseaux.',
+      m:'Configurer le routage dynamique sur des équipements Cisco, avec RIP puis OSPF.',
+      r:'Routage fonctionnel entre les réseaux, vérifié par les tables de routage et des tests de connectivité.'}
+};
+
+/* COMPÉTENCES — p : projets où la compétence est mise en pratique · note : contexte sans fiche projet */
+const SKILLS = [
+  {cat:'Systèmes & annuaire', items:[
+    {n:'Windows Server 2022', p:['p2']}, {n:'Active Directory (AD DS)', p:['p2','agdlp']}, {n:'AGDLP et permissions NTFS', p:['agdlp']},
+    {n:'PowerShell', p:['p2']}, {n:'DNS / DHCP', p:['p2']}, {n:'Linux', note:'Usage personnel'}]},
+  {cat:'Virtualisation & stockage', items:[
+    {n:'Proxmox VE', p:['p2']}, {n:'NAS Synology (DSM)', p:['nas']}, {n:'Sauvegarde et archivage', p:['nas']}]},
+  {cat:'Réseau', items:[
+    {n:'Cisco IOS', p:['cisco']}, {n:'Routage RIP / OSPF', p:['cisco']}, {n:'VLAN et adressage IP', p:['p2']}]},
+  {cat:'Support & Microsoft 365', items:[
+    {n:'SharePoint', p:['tickets','sharepoint']}, {n:'Support matériel et logiciel', note:'160 collaborateurs chez INEO RHT'}, {n:'Gestion de parc', note:'Au quotidien en alternance'}]},
+  {cat:'Développement web', items:[
+    {n:'HTML / CSS / JavaScript', p:['p1']}, {n:'Graphiques SVG et API Web', p:['p1']}]}
+];
+
+const PROJECTS = [
+  {id:'nas', ctx:'pro', title:'NAS de sauvegarde des archives', role:'Stockage & sauvegarde', done:true, status:'En production', period:'2026',
+   img:'assets/nas-synology.jpg',
+   short:'Mise en place et administration d\'un NAS Synology d\'environ 10 To qui centralise les archives d\'une agence de l\'entreprise.',
+   tech:'NAS Synology, DiskStation Manager (DSM), dossiers partagés, utilisateurs, groupes et privilèges',
+   html:`<p>Une agence de l'entreprise avait besoin d'un espace centralisé pour sauvegarder ses archives. J'ai mis en place un <b>NAS Synology d'environ 10 To</b> et j'en suis <b>l'administrateur</b>.</p>
+<figure class="shot"><img src="assets/nas-synology.jpg" alt="Panneau de configuration Synology DSM du NAS, volume utilisé à 84 %" loading="lazy"><figcaption>Panneau de configuration DSM et tableau de bord du NAS (nom du serveur et adresse IP masqués).</figcaption></figure>
+<h4>Ce que je gère</h4><ul>
+<li><b>Comptes utilisateurs et groupes</b> : création des comptes des collaborateurs de l'agence et regroupement par équipe.</li>
+<li><b>Dossiers partagés</b> : création de l'arborescence des archives.</li>
+<li><b>Droits d'accès</b> : attribution des privilèges (lecture ou lecture / écriture) aux groupes selon les besoins de chacun.</li>
+<li><b>Suivi du stockage</b> : surveillance de l'espace disque et de l'état du volume depuis le tableau de bord (environ 9 To utilisés sur près de 11 To) pour anticiper l'archivage ou l'extension.</li></ul>`},
+  {id:'agdlp', ctx:'pro', title:'Refonte des droits d\'accès dans l\'AD', role:'Active Directory', done:false, status:'En cours', period:'2026', diagram:true,
+   short:'Remplacement des droits attribués un par un par une organisation en groupes (méthode AGDLP) sur les dossiers partagés de l\'entreprise.',
+   tech:'Active Directory, groupes globaux, groupes de domaine local, permissions NTFS, méthode AGDLP',
+   html:`<p>Les droits d'accès aux dossiers partagés de l'entreprise étaient donnés <b>individuellement</b>, utilisateur par utilisateur. Avec le temps, cela devient difficile à maintenir : on ne sait plus qui a accès à quoi, et un collaborateur qui change de poste ou quitte l'entreprise peut garder des accès.</p>
+<h4>La solution : la méthode AGDLP</h4><div class="diag">${AGDLP_SVG}</div>
+<ol>
+<li><b>A</b> — les <b>comptes</b> utilisateurs…</li>
+<li><b>G</b> — …sont membres de <b>groupes globaux</b>, un par service ou par fonction ;</li>
+<li><b>DL</b> — ces groupes globaux sont membres de <b>groupes de domaine local</b>, un par ressource et par niveau d'accès (lecture, modification) ;</li>
+<li><b>P</b> — les <b>permissions NTFS</b> des dossiers ne sont données qu'aux groupes de domaine local.</li></ol>
+<h4>Ce que ça change</h4><ul>
+<li>Une arrivée, un départ ou un changement de poste se gère en ajoutant ou retirant l'utilisateur d'un seul groupe global.</li>
+<li>Les droits d'un dossier se lisent directement dans ses groupes : l'audit est beaucoup plus simple.</li>
+<li>Chacun n'a que les accès nécessaires à son poste (principe du moindre privilège).</li></ul>
+<p class="note">Les informations de l'entreprise sont confidentielles : le schéma ci-dessus est un exemple de principe, les noms de groupes sont fictifs.</p>`},
+  {id:'tickets', ctx:'pro', visual:'tickets', title:'Gestion des tickets via SharePoint', role:'Support utilisateurs', done:true, status:'Réalisé', period:'Première année', e5:[1],
+   short:'Système de demandes d\'assistance par formulaire SharePoint pour centraliser et suivre les demandes des collaborateurs.',
+   tech:'SharePoint, formulaires, Microsoft 365',
+   html:`<p>Pour mieux suivre les demandes d'assistance, j'ai mis en place un <b>système de tickets basé sur un formulaire SharePoint</b> : les collaborateurs déposent leur demande au même endroit, ce qui permet de les centraliser, de les prioriser et d'en garder une trace.</p>`},
+  {id:'sharepoint', ctx:'pro', visual:'intranet', title:'Développement du SharePoint de l\'entreprise', role:'Présence en ligne', done:false, status:'En cours', period:'Depuis le 23/05/26', e5:[2,3],
+   short:'Projet de développement du site SharePoint interne de l\'entreprise, mené en mode projet.',
+   tech:'SharePoint Online, Microsoft 365',
+   html:`<p>Je participe au <b>développement du SharePoint de l'entreprise</b>, l'espace interne qui regroupe informations et documents pour les collaborateurs. Ce projet mobilise la présence en ligne de l'organisation et le travail en mode projet.</p>`},
+  {id:'p2', ctx:'formation', visual:'infra', title:'AP 1 · Infrastructure GSB', role:'Réseau & système', done:false, status:'Étape 1 terminée', period:'Atelier professionnel',
+   short:'Annuaire Active Directory pour l\'organisation GSB : 8 services, comptes créés par script PowerShell.',
+   tech:'Proxmox VE, Windows Server 2022, Active Directory (AD DS), DNS, DHCP, PowerShell, VLAN',
+   html:`<p>Pour l'organisation <b>GSB</b>, je mets en place un annuaire <b>Active Directory</b> qui centralise l'authentification et la gestion des postes des 8 services : Accueil, Communication, Comptabilité, Développement, DSI, Labo-recherche, Réseaux &amp; Systèmes et RH. Le premier point de l'AP est <b>terminé</b>.</p>
+<p><a href="https://github.com/Ghouly-alt/INFRA-SISR-Loic" target="_blank" rel="noopener">Documentation et captures sur GitHub (INFRA-SISR-Loic) ↗</a></p>
+<h4>Environnement</h4>
+<table><tr><th>Élément</th><th>Valeur</th></tr>
+<tr><td>Hyperviseur</td><td>Proxmox VE (pool Lolo)</td></tr>
+<tr><td>Réseau / VLAN</td><td>10.2.121.0/24 · VLAN 800</td></tr>
+<tr><td>Contrôleur de domaine</td><td>VM 801 · AD-DC · 10.2.121.2 (AD DS + DNS)</td></tr>
+<tr><td>Poste client</td><td>VM 802 · Client2 · 10.2.121.30</td></tr>
+<tr><td>Domaine</td><td>gsblolo.local</td></tr></table>
+<h4>Ce que j'ai réalisé</h4><ol>
+<li>Création des VM sur Proxmox (q35, UEFI, TPM 2.0, 4 vCPU, 4 Gio de RAM, 64 Gio de disque).</li>
+<li>Installation de Windows Server 2022 et configuration réseau statique.</li>
+<li>Rôles AD DS et DNS, promotion en contrôleur de domaine d'une nouvelle forêt.</li>
+<li>Organisation de l'annuaire : OU Services, Utilisateurs, Ordinateurs, Groupes et 8 groupes de sécurité.</li>
+<li>Script PowerShell d'import des comptes depuis un CSV (identifiant <code>initiale.nom</code>, vérification des doublons, mot de passe à changer à la première connexion, jamais stocké dans le dépôt).</li>
+<li>Jonction d'un poste client Windows au domaine et ouverture de session réussie.</li></ol>
+<h4>Pour aller plus loin</h4><p>Documentation de l'ajout d'un <b>contrôleur de domaine secondaire</b> sur une maquette : haute disponibilité, réplication AD, redondance DNS et basculement DHCP, avec tests de bascule.</p>`},
+  {id:'gsb', ctx:'formation', visual:'parc', title:'Global Swiss Bourdin', role:'Mission en formation', done:true, status:'Terminé', period:'20/05/26 – 21/05/26', e5:[0,1],
+   short:'Mission sur le contexte de l\'organisation GSB : gestion du patrimoine informatique et réponse aux incidents et demandes.',
+   tech:'Voir la documentation',
+   html:`<p>Mission réalisée en formation dans le contexte de l'organisation <b>Global Swiss Bourdin</b>, autour de la gestion du patrimoine informatique et de la réponse aux incidents et aux demandes d'assistance.</p>
+<p><a href="https://drive.google.com/drive/folders/17k6Yh1YECzoqbg8lJewWjeEWQFlthh7E?usp=drive_link" target="_blank" rel="noopener">Ouvrir la documentation (Google Drive) ↗</a></p>`},
+  {id:'cisco', ctx:'formation', visual:'routage', title:'TP Réseaux Cisco : RIP et OSPF', role:'Routage', done:true, status:'Terminé', period:'16/05/26 – 20/05/26', e5:[2,3,4],
+   short:'Configuration du routage dynamique sur des équipements Cisco avec les protocoles RIP et OSPF.',
+   tech:'Cisco IOS, RIP, OSPF',
+   html:`<p>Travaux pratiques de <b>routage dynamique</b> sur des équipements Cisco : configuration des protocoles <b>RIP</b> puis <b>OSPF</b>, vérification des tables de routage et de la connectivité entre réseaux.</p>`},
+  {id:'p1', ctx:'perso', title:'Carnet Fonte', role:'Application web', done:true, status:'Utilisable', mockup:true, period:'Projet personnel',
+   short:'Application de suivi de musculation qui calcule seule la charge et les répétitions de la prochaine séance.',
+   tech:'HTML, CSS, JavaScript (sans framework), SVG, Web Audio API, Wake Lock API, localStorage',
+   html:`<p>Application web pensée pour le téléphone, utilisée directement à la salle : on y note ses séances et elle calcule la <b>charge et les répétitions à viser à la séance suivante</b>.</p>
+<h4>Ce que j'ai réalisé</h4><ul>
+<li><b>Plus de 360 exercices</b> classés par groupe musculaire et par matériel, avec recherche insensible aux accents et exercices personnalisés.</li>
+<li><b>Séance en direct</b> : charge, répétitions et RPE par série, séries d'échauffement, rappel de la séance précédente, chrono et volume en temps réel.</li>
+<li><b>Minuteur de repos</b> automatique avec bip et vibration, écran maintenu allumé.</li>
+<li><b>Algorithme de progression</b> : double progression dans une fourchette de répétitions, décharge automatique de 10 % après deux échecs, détection des plateaux.</li>
+<li><b>Historique et records</b> (1RM estimé avec la formule d'Epley) et statistiques dessinées en SVG à la main.</li>
+<li><b>Données</b> : sauvegarde locale, synchronisation avec fusion des modifications, fonctionnement hors ligne, export et import JSON.</li>
+<li><b>Mode démo</b> : 8 semaines de séances simulées, thème clair / sombre, accessibilité clavier et ARIA.</li></ul>`}
+];
+
+const E5_COLS = ['Gérer le patrimoine informatique','Répondre aux incidents et demandes','Développer la présence en ligne','Travailler en mode projet','Mettre à disposition un service','Organiser son développement professionnel'];
+const E5_ROWS = [
+  {sep:'Réalisations en cours de formation'},
+  {p:'gsb', t:'<a href="https://drive.google.com/drive/folders/17k6Yh1YECzoqbg8lJewWjeEWQFlthh7E?usp=drive_link" target="_blank" rel="noopener">Global Swiss Bourdin</a>', d:'20/05/26 – 21/05/26', on:[0,1]},
+  {p:'cisco', t:'TP Réseaux sur Cisco (protocoles RIP et OSPF)', d:'16/05/26 – 20/05/26', on:[2,3,4]},
+  {sep:'Réalisations en milieu professionnel — première année'},
+  {t:'Gestion du parc : commandes des nouveaux arrivants, adaptation des moyens, respect des règles internes, gestion des incidents matériel, suivi des accès serveurs (dont sauvegarde)', d:'27/08/25 – en cours', on:[0]},
+  {p:'tickets', t:'Système de gestion de tickets via formulaire SharePoint', d:'—', on:[1]},
+  {t:'Kiséo (prise en main admin, migration des comptes) — Migration NEO', d:'26/02/26 – 19/04/26', on:[4]},
+  {t:'E-learning Equans : identification de relais / sachants dans le monde Equans', d:'27/08/25 – en cours', on:[5]},
+  {p:'sharepoint', t:'Projet de développement du SharePoint de l\'entreprise', d:'23/05/26 – en cours', on:[2,3]},
+  {sep:'Réalisations en milieu professionnel — seconde année'},
+  {todo:'À venir.'}
+];
+
+/* ===== RENDU ===== */
+const $ = (s,r=document)=>r.querySelector(s);
+const pad = n=>String(n).padStart(2,'0');
+const REDUCED = matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+// Menu mobile + horloge (heure de Villeurbanne)
+const nav=$('#nav'), mb=$('#menu-btn');
+mb.onclick=()=>{const o=nav.classList.toggle('open'); mb.setAttribute('aria-expanded',o)};
+nav.addEventListener('click',e=>{if(e.target.closest('a')){nav.classList.remove('open');mb.setAttribute('aria-expanded',false)}});
+const tick=()=>$('#clock').textContent=new Date().toLocaleTimeString('fr-FR',{hour:'2-digit',minute:'2-digit',timeZone:'Europe/Paris'}).replace(':',' ');
+tick(); setInterval(tick,15000);
+
+// Bandeau défilant
+$('#mq').innerHTML = [...MARQUEE,...MARQUEE,...MARQUEE,...MARQUEE].map((w,i)=>`<span class="${i%2?'st':''}">${w}</span><span class="st">✳</span>`).join('');
+
+// Parcours
+const rowHTML = m=>`<div class="rv"><span class="mono">${m.when}</span><h4>${m.title}</h4><p>${m.org}${m.desc?' — '+m.desc:''}</p><span class="st mono ${m.done?'muted':''}">${m.done?'✔ Terminé':'● En cours'}</span></div>`;
+$('#m-formation').innerHTML = MATCHES.filter(m=>m.type==='formation').map(rowHTML).join('');
+$('#m-experience').innerHTML = MATCHES.filter(m=>m.type==='experience').map(rowHTML).join('');
+
+// Compétences
+const pTitle = id=>PROJECTS.find(x=>x.id===id).title;
+$('#skills').innerHTML = SKILLS.map((g,i)=>`<div class="skill rv"><span class="mono">0${i+1}</span><h4>${g.cat}</h4><ul>${g.items.map(s=>`<li><span>${s.n}</span>${s.p
+  ? `<span class="proj">${s.p.map(id=>`<button type="button" class="tag" data-p="${id}">${pTitle(id)}</button>`).join('')}</span>`
+  : `<span class="note">${s.note}</span>`}</li>`).join('')}</ul></div>`).join('');
+
+// Mosaïque de pixels en niveaux de gris, propre à chaque projet (graine = id)
+function pixels(seed){
+  let h=0; for(const c of seed) h=(h*31+c.charCodeAt(0))>>>0;
+  const rnd=()=>(h=(h*1664525+1013904223)>>>0)/4294967296;
+  const cols=16, rows=10; let out='';
+  for(let y=0;y<rows;y++) for(let x=0;x<cols;x++){
+    const v=rnd(); if(v<.5) continue;
+    const l=Math.round(18+Math.pow(rnd(),1.6)*200);
+    out+=`<rect x="${x}" y="${y}" width="1" height="1" fill="rgb(${l},${l},${l-4})"/>`;
+  }
+  const bx=Math.floor(rnd()*10)+2, by=Math.floor(rnd()*5)+2;
+  out+=`<rect x="${bx}" y="${by}" width="3" height="3" fill="#3a3a38"/>`;
+  return `<svg viewBox="0 0 16 10" preserveAspectRatio="none" shape-rendering="crispEdges" aria-hidden="true">${out}</svg>`;
+}
+
+// Projets : piste horizontale
+const status = p=>`${p.done?'✔':'●'} ${p.status}`;
+const track=$('#ptrack');
+track.innerHTML = PROJECTS.map((p,i)=>`<article class="pcard" data-p="${p.id}" data-e5="${(p.e5||[]).join(' ')}" tabindex="0" role="button" aria-label="Ouvrir la fiche ${p.title}">
+  <div class="meta mono"><span>${pad(i+1)} / ${pad(PROJECTS.length)}</span><span>${PROJECT_CTX[p.ctx]} · ${p.period}</span></div>
+  <div class="pix">${pixels(p.id)}</div>
+  <h3>${p.title}</h3><p>${p.short}</p>
+  <div class="tags"><span class="tag">${p.role}</span><span class="tag">${status(p)}</span>${(p.e5||[]).map(c=>`<span class="tag" title="${E5_COLS[c]}">C${c+1}</span>`).join('')}</div>
+  <div class="act"><span class="btn light">Voir la fiche</span></div>
+</article>`).join('');
+document.querySelectorAll('[data-scroll]').forEach(b=>b.onclick=()=>{
+  const w=track.querySelector('.pcard:not([hidden])')?.offsetWidth||400;
+  track.scrollBy({left:w*b.dataset.scroll,behavior:REDUCED?'auto':'smooth'});
+});
+track.addEventListener('scroll',()=>{
+  const vis=[...track.querySelectorAll('.pcard:not([hidden])')];
+  const idx=vis.findIndex(c=>c.offsetLeft-track.offsetLeft+c.offsetWidth/2>track.scrollLeft);
+  $('#ppos').textContent=`${pad(Math.max(0,idx)+1)} / ${pad(vis.length)}`;
+},{passive:true});
+
+// Filtre des projets par compétence E5
+const pf=$('#pfilters');
+pf.innerHTML=`<button type="button" data-c="all" aria-pressed="true">Tous</button>`+E5_COLS.map((c,i)=>`<button type="button" data-c="${i}" aria-pressed="false" title="${c}">C${i+1} · ${c}</button>`).join('');
+pf.addEventListener('click',e=>{
+  const b=e.target.closest('[data-c]'); if(!b) return; const c=b.dataset.c;
+  pf.querySelectorAll('button').forEach(x=>x.setAttribute('aria-pressed',x===b));
+  track.querySelectorAll('.pcard').forEach(card=>card.hidden = c!=='all' && !card.dataset.e5.split(' ').includes(c));
+  const n=track.querySelectorAll('.pcard:not([hidden])').length;
+  $('#pcount').textContent = c==='all' ? '' : `${n} projet(s) valident « ${E5_COLS[c].toLowerCase()} » (C${+c+1}).`;
+  track.scrollLeft=0; track.dispatchEvent(new Event('scroll'));
+});
+
+// Maquettes de l'appli Carnet Fonte
+const phone=(body,tab)=>`<div class="phone" aria-hidden="true"><div class="scr"><div class="notch"><i></i></div>${body}
+  <div class="tabbar">${[['🏋','Séance'],['📋','Routines'],['📈','Stats'],['🕑','Historique']].map(([i,l])=>`<span class="${l===tab?'on':''}"><i>${i}</i>${l}</span>`).join('')}</div></div></div>`;
+const PHONE_SEANCE=phone(`<div class="app-top"><div><small>Séance en cours</small><b>Push · Pecs / Épaules</b></div><span class="chrono">42:15</span></div>
+  <div class="app-body"><div class="ex"><h5>Développé couché — Barre</h5><div class="last">Dernière fois : 80 kg × 8 · 8 · 7</div>
+    <div class="set hd"><span>#</span><span>Kg</span><span>Reps</span><span>RPE</span><span></span></div>
+    <div class="set"><span>1</span><span>80</span><span>8</span><span>7</span><span class="ok">✓</span></div>
+    <div class="set"><span>2</span><span>80</span><span>8</span><span>8</span><span class="ok">✓</span></div>
+    <div class="set cur"><span>3</span><span>80</span><span>8</span><span>9</span><span class="ok no">✓</span></div></div>
+    <div class="hint">▲ Prochaine séance : <b>82,5 kg × 6–8</b> (haut de fourchette atteint)</div>
+    <div class="ex"><h5>Développé militaire — Haltères</h5><div class="last">Dernière fois : 24 kg × 10 · 9 · 9</div></div>
+    <div class="rest">⏱ Repos <span>1:45</span></div></div>`,'Séance');
+const bars=[38,42,40,47,51,49,55,58,54,61,64,68];
+const PHONE_STATS=phone(`<div class="app-top"><div><small>Statistiques</small><b>12 dernières semaines</b></div><span class="chrono">🔥 9</span></div>
+  <div class="app-body"><div class="kpis"><div><b>102 kg</b><small>1RM estimé couché</small></div><div><b>+12 %</b><small>Volume vs mois dernier</small></div></div>
+    <div class="chart"><h6>Volume par semaine (t)</h6><svg viewBox="0 0 200 80" width="100%">${bars.map((v,i)=>`<rect x="${i*16.6+2}" y="${78-v}" width="11" height="${v}" rx="1" fill="${i===11?'#f2f2ee':'#3a3a3a'}"/>`).join('')}</svg></div>
+    <div class="chart"><h6>Progression — Développé couché</h6><svg viewBox="0 0 200 70" width="100%"><polyline fill="none" stroke="#f2f2ee" stroke-width="2" points="0,60 25,57 50,52 75,53 100,44 125,40 150,33 175,27 200,20"/>
+      ${[[0,60],[50,52],[100,44],[150,33],[200,20]].map(([x,y])=>`<circle cx="${x}" cy="${y}" r="3" fill="#f2f2ee"/>`).join('')}</svg></div>
+    <div class="hint">🏆 Nouveau record : <b>85 kg × 6</b> au développé couché</div></div>`,'Stats');
+
+// Fiche projet
+const dlg=$('#dlg');
+function openProject(id){
+  const p=PROJECTS.find(x=>x.id===id); if(!p) return;
+  const k=CMR[p.id];
+  const cmr = k ? `<div class="cmr">${[['01 · Contexte','c'],['02 · Mission','m'],['03 · Résultat','r']].map(([t,f])=>`<div><span class="mono">${t}</span><p>${k[f]}</p></div>`).join('')}</div>` : '';
+  const media = p.mockup ? `<h4>Aperçu de l'application</h4><div class="phones">${PHONE_SEANCE}${PHONE_STATS}</div><p class="note" style="text-align:center">Écrans de la séance en direct et des statistiques (maquette de l'interface, données de démonstration).</p>`
+    : p.visual ? `<div class="diag" style="margin-top:20px">${VISUALS[p.visual]}</div>` : '';
+  const comp = p.e5 ? `<h4>Compétences E5 mobilisées</h4><ul>${p.e5.map(i=>`<li><b>C${i+1}</b> — ${E5_COLS[i]}</li>`).join('')}</ul>` : '';
+  $('#dlg-in').innerHTML=`<span class="mono muted">${PROJECT_CTX[p.ctx]} · ${p.period} · ${status(p)}</span><h2 id="dlg-t">${p.title}</h2>${cmr}${media}<h4>En détail</h4>${p.html}${comp}<h4>Technos / outils</h4><p>${p.tech}</p>`;
+  dlg.showModal(); dlg.querySelector('.in').scrollTop=0;
+}
+document.addEventListener('click',e=>{const t=e.target.closest('[data-p]'); if(t&&!e.target.closest('dialog')) openProject(t.dataset.p)});
+track.addEventListener('keydown',e=>{if((e.key==='Enter'||e.key===' ')&&e.target.dataset.p){e.preventDefault();openProject(e.target.dataset.p)}});
+$('#dlg-x').onclick=()=>dlg.close();
+dlg.addEventListener('click',e=>{if(e.target===dlg) dlg.close()});
+
+// E5
+$('#legend').innerHTML = E5_COLS.map((c,i)=>`<div><b>C${i+1}</b>${c}</div>`).join('');
+$('#e5t').innerHTML = `<thead><tr><th>Réalisations professionnelles</th><th>Période</th>${E5_COLS.map((c,i)=>`<th title="${c}">C${i+1}</th>`).join('')}</tr></thead><tbody>`+
+  E5_ROWS.map(r=> r.sep ? `<tr><td class="sep" colspan="${E5_COLS.length+2}">${r.sep}</td></tr>`
+    : r.todo ? `<tr><td colspan="${E5_COLS.length+2}" class="muted">${r.todo}</td></tr>`
+    : `<tr><td>${r.t}${r.p?` <button type="button" class="tag" data-p="${r.p}">Voir la fiche →</button>`:''}</td><td class="mono" style="font-size:11px">${r.d}</td>${E5_COLS.map((c,i)=>r.on.includes(i)?`<td class="k on" title="${c}"><span aria-hidden="true">✔</span><span class="sr">${c}</span></td>`:'<td class="k"><span aria-hidden="true">·</span></td>').join('')}</tr>`).join('')+'</tbody>';
+
+// Veille
+const catOf=id=>VEILLE_CATS.find(c=>c.id===id);
+const fmtDate=d=>new Date(d+'T12:00:00').toLocaleDateString('fr-FR',{day:'2-digit',month:'short',year:'numeric'});
+const isNew=d=>(Date.now()-new Date(d+'T12:00:00'))/864e5<=21;
+$('#vlist').innerHTML = [...VEILLE].sort((a,b)=>b.date.localeCompare(a.date)).map(v=>`<article class="vitem rv" data-cat="${v.cat}">
+  <div class="when mono"><b>${fmtDate(v.date)}</b>${catOf(v.cat).label}</div>
+  <div><div class="badges">${isNew(v.date)?'<span class="inv">★ Nouveau</span>':''}${v.ia?'<span>IA</span>':''}<span>${catOf(v.cat).label}</span></div><h4>${v.title}</h4><p>${v.text}</p></div>
+  <div class="src mono"><span class="muted">Source : ${v.source}</span><a href="${v.url}" target="_blank" rel="noopener">Lire l'article ↗</a></div>
+</article>`).join('');
+$('#vsources').innerHTML = VEILLE_SOURCES.map(s=>`<span class="tag" style="cursor:default">${s}</span>`).join('');
+$('#vsn').textContent = pad(VEILLE_SOURCES.length);
+const vf=$('#vfilters');
+vf.innerHTML=[{id:'all',label:'Tout'},...VEILLE_CATS].map((c,i)=>`<button type="button" data-f="${c.id}" aria-pressed="${i===0}" ${c.sub?`title="${c.sub}"`:''}>${c.label} · ${c.id==='all'?VEILLE.length:VEILLE.filter(v=>v.cat===c.id).length}</button>`).join('');
+vf.addEventListener('click',e=>{const b=e.target.closest('[data-f]'); if(!b) return; const f=b.dataset.f;
+  vf.querySelectorAll('button').forEach(x=>x.setAttribute('aria-pressed',x===b));
+  document.querySelectorAll('.vitem').forEach(it=>{it.hidden=f!=='all'&&it.dataset.cat!==f; it.classList.add('seen')});
+});
+
+// Apparition au défilement + lien de navigation actif + bouton haut de page
+if(!REDUCED && 'IntersectionObserver' in window){
+  const io=new IntersectionObserver(es=>es.forEach(en=>{if(en.isIntersecting){en.target.classList.add('seen');io.unobserve(en.target)}}),{threshold:.08,rootMargin:'0px 0px -5% 0px'});
+  document.querySelectorAll('.rv').forEach(el=>io.observe(el));
+}else document.querySelectorAll('.rv').forEach(el=>el.classList.add('seen'));
+const links=[...nav.querySelectorAll('a[href^="#"]:not(.mark)')];
+const so=new IntersectionObserver(es=>es.forEach(en=>{if(en.isIntersecting) links.forEach(a=>a.toggleAttribute('aria-current',a.getAttribute('href')==='#'+en.target.id))}),{rootMargin:'-45% 0px -50% 0px'});
+document.querySelectorAll('section.s').forEach(s=>so.observe(s));
+addEventListener('scroll',()=>$('#to-top').classList.toggle('on',scrollY>innerHeight),{passive:true});
+
+// Hero : trame de points (halftone) autour d'une sphère qui tourne, réagit à la souris
+(function(){
+  const cv=$('#halftone'), cx=cv.getContext('2d'); let w,h,dpr,mx=-1e4,my=-1e4,vis=true;
+  const size=()=>{dpr=Math.min(devicePixelRatio||1,2);w=cv.offsetWidth;h=cv.offsetHeight;cv.width=w*dpr;cv.height=h*dpr;cx.setTransform(dpr,0,0,dpr,0,0)};
+  size(); addEventListener('resize',size);
+  cv.parentElement.addEventListener('pointermove',e=>{const r=cv.getBoundingClientRect();mx=e.clientX-r.left;my=e.clientY-r.top});
+  cv.parentElement.addEventListener('pointerleave',()=>{mx=my=-1e4});
+  new IntersectionObserver(([e])=>vis=e.isIntersecting).observe(cv);
+  function draw(t){
+    const S=w<700?11:14, cxs=w*(w<900?.5:.58), cys=h*.36, R=Math.min(w,h)*.2;
+    cx.clearRect(0,0,w,h); cx.fillStyle='#f2f2ee';
+    const lx=Math.cos(t*.0004), lz=Math.sin(t*.0004);
+    for(let y=S/2;y<h;y+=S) for(let x=S/2;x<w;x+=S){
+      const dx=(x-cxs)/R, dy=(y-cys)/R, d2=dx*dx+dy*dy; let v;
+      if(d2<1){ const dz=Math.sqrt(1-d2); v=.15+.85*Math.max(0,dx*lx*.8-dy*.35+dz*lz*.6+.25); }
+      else { const d=Math.sqrt(d2); v=Math.max(0,.5-(d-1)*.45)*(.5+.5*Math.sin(x*.05+y*.03+t*.001)); v=v*.5; }
+      const md=Math.hypot(x-mx,y-my); if(md<140) v+=(1-md/140)*.6;
+      const fade=Math.min(1,x/(w*.35)); v*=.25+.75*fade;
+      if(v<.06) continue;
+      cx.globalAlpha=Math.min(1,.25+v); cx.beginPath(); cx.arc(x,y,Math.min(S*.42,v*S*.42+.4),0,7); cx.fill();
+    }
+    cx.globalAlpha=1;
+  }
+  if(REDUCED){draw(2000);return}
+  (function loop(t){ if(vis) draw(t); requestAnimationFrame(loop) })(0);
+})();
+
+// Roadmap : globe en points avec Villeurbanne et les régions visées
+(function(){
+  const cv=$('#globe'), cx=cv.getContext('2d'); let S,dpr,vis=false;
+  const size=()=>{dpr=Math.min(devicePixelRatio||1,2);S=cv.offsetWidth;cv.width=cv.height=S*dpr;cx.setTransform(dpr,0,0,dpr,0,0)};
+  size(); addEventListener('resize',size);
+  new IntersectionObserver(([e])=>vis=e.isIntersecting).observe(cv);
+  const N=1400, pts=[]; const ga=Math.PI*(3-Math.sqrt(5));
+  for(let i=0;i<N;i++){const y=1-2*(i+.5)/N, r=Math.sqrt(1-y*y); pts.push([Math.cos(ga*i)*r,y,Math.sin(ga*i)*r])}
+  const rad=d=>d*Math.PI/180;
+  // [nom, latitude, longitude, domicile, décalage de l'étiquette x, y, alignement]
+  const PLACES=[['VILLEURBANNE · FR',45.77,4.88,true,-14,22,'right'],['BERLIN · DE',52.52,13.40,false,14,-10,'left'],['ZURICH · CH',47.37,8.54,false,16,14,'left']];
+  const ll=(la,lo)=>[Math.cos(rad(la))*Math.sin(rad(lo)),Math.sin(rad(la)),Math.cos(rad(la))*Math.cos(rad(lo))];
+  const tilt=rad(38);
+  const proj=(p,rot)=>{const c=Math.cos(rot),s=Math.sin(rot);let x=p[0]*c+p[2]*s, z=-p[0]*s+p[2]*c, y=p[1];
+    const y2=y*Math.cos(tilt)-z*Math.sin(tilt), z2=y*Math.sin(tilt)+z*Math.cos(tilt); return [x,y2,z2]};
+  function draw(t){
+    const R=S*.42, c0=S/2, rot=-rad(9)+Math.sin(t*.00015)*.55;
+    cx.clearRect(0,0,S,S);
+    const g=cx.createRadialGradient(c0,c0,R*.6,c0,c0,R*1.15); g.addColorStop(0,'#ffffff08'); g.addColorStop(1,'#0000');
+    cx.fillStyle=g; cx.fillRect(0,0,S,S);
+    for(const p of pts){const [x,y,z]=proj(p,rot); if(z<0) continue;
+      cx.globalAlpha=.15+z*.75; cx.fillStyle='#f2f2ee'; cx.beginPath(); cx.arc(c0+x*R,c0-y*R,.6+z*1.1,0,7); cx.fill()}
+    cx.globalAlpha=1;
+    const sp=PLACES.map(([n,la,lo,home,ox,oy,al])=>{const [x,y,z]=proj(ll(la,lo),rot); return {n,home,ox,oy,al,x:c0+x*R,y:c0-y*R,z}});
+    const h=sp[0]; cx.strokeStyle='#f2f2ee88'; cx.setLineDash([3,4]);
+    sp.slice(1).forEach(p=>{ if(p.z>0&&h.z>0){cx.beginPath();cx.moveTo(h.x,h.y);cx.quadraticCurveTo((h.x+p.x)/2,Math.min(h.y,p.y)-S*.08,p.x,p.y);cx.stroke()} });
+    cx.setLineDash([]); cx.font=`400 ${Math.max(9,S*.018)}px "Geist Mono",monospace`;
+    sp.forEach(p=>{ if(p.z<=0) return;
+      cx.fillStyle='#f2f2ee'; cx.fillRect(p.x-3,p.y-3,6,6);
+      if(p.home){cx.strokeStyle='#f2f2ee';cx.strokeRect(p.x-7,p.y-7,14,14)}
+      const tx=p.x+p.ox, ty=p.y+p.oy, tw=cx.measureText(p.n).width+12; cx.textAlign=p.al;
+      cx.fillStyle='#050505d8'; cx.fillRect(p.al==='left'?tx-4:tx-tw+4,ty-12,tw,18);
+      cx.strokeStyle='#f2f2ee55'; cx.strokeRect(p.al==='left'?tx-4:tx-tw+4,ty-12,tw,18);
+      cx.fillStyle='#f2f2ee'; cx.fillText(p.n,tx+(p.al==='left'?2:-2),ty+1);
+    });
+    cx.textAlign='left';
+  }
+  if(REDUCED){draw(0);return}
+  (function loop(t){ if(vis) draw(t); requestAnimationFrame(loop) })(0);
+})();
+</script>
+</body>
+</html>
